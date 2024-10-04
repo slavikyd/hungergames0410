@@ -52,3 +52,39 @@ class AutoBUS {
         nextStation();
     }
 }
+class Passenger {
+    constructor(name, destination) {
+        this.name = name;
+        this.destination = destination;
+    }
+}
+class BusStop {
+    constructor(name) {
+        this.name = name;
+        this.passengers = [];
+    }
+
+    addPassanger(passenger) {
+        this.passengers.push(passenger);
+    }
+
+    removePassanger(passenger) {
+        if (this.passengers.includes(passenger)) {
+            this.passengers.splice(this.passengers.indexOf(passenger), 1);
+        }
+    }
+}
+
+const stop1 = new BusStop("Station 1");
+const stop2 = new BusStop("Station 2");
+const stop3 = new BusStop("Station 3");
+
+const passenger1 = new Passenger("Alice", "Station 2");
+const passenger2 = new Passenger("Bob", "Station 3");
+
+stop1.addPassanger(passenger1);
+stop1.addPassanger(passenger2);
+
+const bus1 = new AutoBUS(1, [stop1, stop2, stop3]);
+
+bus1.go();
